@@ -72,6 +72,6 @@
 #define TEXTURES_DIRECTORY "resources/textures"
 
 // LOD Level Ranges
-#define LOD_RANGE_1 3.0f
-#define LOD_RANGE_2 7.0f
-#define LOD_RANGE_3 10.0f
+#define LOD_RANGE_1 12.0f
+#define LOD_RANGE_2 15.0f
+#define LOD_RANGE_3 17.0f

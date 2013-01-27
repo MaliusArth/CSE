@@ -22,6 +22,7 @@
 
 #include <string>
 
+//#include "common.h"
 //#include "glcube.h"
 #include "window.h"
 #include "lettercube.h"
@@ -63,9 +64,10 @@ namespace WordGL {
     }
     void LetterCube::draw() {
         glPushMatrix();
-        Point nearest = getNearest(Point(Window::getInstance()->camera_pos[0], Window::getInstance()->camera_pos[1],Window::getInstance()->camera_pos[2]));
-        //std::cout << "TexName: " << this->topTextureName << " eyeX: " << Window::getInstance()->eyeX << " eyeY: " << Window::getInstance()->eyeY << " eyeZ: " << Window::getInstance()->eyeZ << std::endl;
-        GLfloat distance = sqrt(pow(Window::getInstance()->camera_pos[0]-nearest.getXCoord(), 2)+pow(Window::getInstance()->camera_pos[1]-nearest.getYCoord(), 2)+pow(Window::getInstance()->camera_pos[2]-nearest.getZCoord(), 2));
+
+        Point camera = Point(Window::getInstance()->camera_pos[0], Window::getInstance()->camera_pos[1], Window::getInstance()->camera_pos[2]);
+        Point nearest = getNearest(camera);
+        GLfloat distance = sqrt(pow(camera.getXCoord()-nearest.getXCoord(), 2)+pow(camera.getYCoord()-nearest.getYCoord(), 2)+pow(camera.getZCoord()-nearest.getZCoord(), 2));
 
         if( distance >= LOD_RANGE_3 )
         {
@@ -80,8 +82,10 @@ namespace WordGL {
             this->setColor(0.0f, 0.0f, 1.0f);
         }
         else
-            colorLocked = false;
-        
+        {
+            this->setColor(1.0f, 1.0f, 1.0f);
+        }
+
         GLCube::draw();
 
         glPopMatrix();
@@ -89,13 +93,16 @@ namespace WordGL {
     
     Point LetterCube::getNearest(Point point) {
         return GLCube::getNearest(point);
-        /*GLfloat matrix[16]; 
-        glGetFloatv (GL_MODELVIEW_MATRIX, matrix);
-        const float worldPosX = matrix[12];
-        const float worldPosY = matrix[13];
-        const float worldPosZ = matrix[14];
 
-        Point nearest = Point(
+        /*const float worldPosX = -(mdl[0] * mdl[12] + mdl[1] * mdl[13] + mdl[2] * mdl[14]);
+        const float worldPosY = -(mdl[4] * mdl[12] + mdl[5] * mdl[13] + mdl[6] * mdl[14]);
+        const float worldPosZ = -(mdl[8] * mdl[12] + mdl[9] * mdl[13] + mdl[10] * mdl[14]);*/
+
+        /*glPushMatrix();
+            glutSolidCube(0.5f);
+        glPopMatrix();*/
+
+        /*Point nearest = Point(
             (sqrt(pow(worldPosX-point.getXCoord(), 2))<=sqrt(pow((worldPosX+width)-point.getXCoord(), 2))?worldPosX:worldPosX+width),
             (sqrt(pow(worldPosY-point.getYCoord(), 2))<=sqrt(pow((worldPosY+height)-point.getYCoord(), 2))?worldPosY:worldPosY+height),
             (sqrt(pow(worldPosZ-point.getZCoord(), 2))<=sqrt(pow((worldPosZ+depth)-point.getZCoord(), 2))?worldPosZ:worldPosZ+depth));

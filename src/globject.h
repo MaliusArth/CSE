@@ -33,24 +33,34 @@
 #include "textureloader.h"
 
 namespace WordGL {
+    
+    struct Color
+    {
+        Color(GLfloat red = 1.0f, GLfloat green = 1.0f, GLfloat blue = 1.0f, GLfloat alpha = 1.0f){
+            r = red;
+            g = green;
+            b = blue;
+            a = alpha;
+        }
+        GLfloat r,g,b,a;
+    };
 
     class GLObject {
 
     public:
         GLObject();
         virtual ~GLObject();
-        void setColor(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha = 1.0f);
+        void setColor(Color color);
+        void setColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a = 1.0f);
         virtual Point getNearest(Point point);
 
     protected:
         void setCoordsDimension(Point startPoint, Dimension dimension);
         void move(GLfloat xCoord, GLfloat yCoord, GLfloat zCoord);
-        GLfloat startX;
-        GLfloat startY;
-        GLfloat startZ;
-        GLfloat width;
-        GLfloat height;
-        GLfloat depth;
+        GLfloat startX, startY, startZ;
+        GLfloat width, height, depth;
+        Color _color;
+
     };
 
 }

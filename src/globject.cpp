@@ -44,8 +44,15 @@ namespace WordGL {
         this->height = dimension.getHeight();
     }
 
-    void GLObject::setColor ( GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha ) {
-        glColor4f(red, green, blue, alpha);
+    void GLObject::setColor ( Color color ) {
+        _color = color;
+    }
+
+    void GLObject::setColor (GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha){
+        _color.r = red;
+        _color.g = green;
+        _color.b = blue;
+        _color.a = alpha;
     }
 
     void GLObject::move ( GLfloat xCoord, GLfloat yCoord, GLfloat zCoord) {

@@ -208,7 +208,7 @@ namespace WordGL {
         eyeZ = matrix[14];*/
 
         //std::cout << "eyeX: " << eyeX << " eyeY: " << eyeY << " eyeZ: " << eyeZ << std::endl;
-        std::cout << "camera X: " << camera_pos[0] << " Y: " << camera_pos[1] << " Z: " << camera_pos[2] << std::endl;
+        //std::cout << "camera X: " << camera_pos[0] << " Y: " << camera_pos[1] << " Z: " << camera_pos[2] << std::endl;
 		
         //update light position
         glLightfv(GL_LIGHT1, GL_POSITION, LightPosition);        // Position The Light
@@ -216,7 +216,7 @@ namespace WordGL {
 
         // draw game objects
         glPushMatrix();
-            glutSolidCube(1.0f);
+            //glutSolidCube(1.0f);
         glPopMatrix();
         this->game.update();
         glutSwapBuffers();

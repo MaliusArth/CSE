@@ -112,7 +112,7 @@ namespace WordGL {
 		glPushMatrix();
 		
 		//Draw the panel itself
-        this->move(this->startX, this->startY, this->startZ);
+        //this->move(this->startX, this->startY, this->startZ);
         //this->setColor(1.0f, 1.0f, 1.0f);
         this->setTexture("wood");
 

@@ -47,6 +47,7 @@ namespace WordGL {
         this->leftTexture = false;
         this->frontTexture = false;
         this->backTexture = false;
+        setColor(1.0f, 1.0f, 1.0f);
     }
 
     /**
@@ -56,8 +57,7 @@ namespace WordGL {
     void GLCube::draw() {
         glPushMatrix();
 
-        if(!colorLocked)
-            this->setColor(1.0f, 1.0f, 1.0f);
+        glColor4f(_color.r, _color.g, _color.b, _color.a);
 
         this->move(this->startX, this->startY, this->startZ);
 

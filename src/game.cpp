@@ -45,7 +45,7 @@ namespace WordGL {
         //                 horiz   vert    vorne            breite hoehe tiefe
         , backGround(Point(-32.0f, 0.0f, -32.0f), Dimension(64.0f, 0.0f, 64.0f))	//point(x, y, z), Dimension(x, y, z)
         , gameTable(Point(0.0f, 0.0f, -9.0f), Dimension(6.0f, 0.5f, (6.0f/8.0f)*GAMETABLE_ROWS_NUM))
-        , scorePanel(Point(0.0f, 0.0f, -6.0f), Dimension(6.0f, 0.5f, 1.0f))
+        , scorePanel(Point(0.0f, 0.0f, -11.0f), Dimension(6.0f, 0.5f, 1.0f))
         , letterShelf(Point(0.0f, 0.0f, 0.0f), Dimension(6.0f, 0.5f, 1.0f))
     {
         this->dict.load(DICTIONARY_PATH);

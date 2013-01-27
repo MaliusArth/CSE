@@ -59,7 +59,7 @@ namespace WordGL {
         this->setTexture(std::string("woodPlanks1"));
         GLCube::draw();
         
-        this->move(this->startX, this->startY, this->startZ);
+        //this->move(this->startX, this->startY, this->startZ);
         for(unsigned int i=0; i<this->letterCubes.size(); i++){
             this->letterCubes[i]->draw();
         }
@@ -77,7 +77,7 @@ namespace WordGL {
         
         // create new row
         for(unsigned int i=0; i<this->columns; i++){
-            Point startPoint(i*this->cubeUnit+this->cubePadding+this->startX, this->height, 0.0f+this->cubePadding);
+            Point startPoint(i*this->cubeUnit+this->cubePadding+this->startX, this->height+this->startY, 0.0f+this->cubePadding+this->startZ);
             Dimension dimension(this->cubeUnit-2*this->cubePadding, 0.3f-2*this->cubePadding, this->cubeUnit-2*this->cubePadding);
             GameTableLetterCube* letterCube =
             new GameTableLetterCube(startPoint, dimension, this->getRandomCharacter(), this->cubeUnit);
@@ -214,7 +214,7 @@ namespace WordGL {
 
         // create game over msg
         for(unsigned int i=0; i<gameOverMsg.size(); i++){
-            Point startPoint(i*this->cubeUnit+this->cubePadding+this->startX, this->height, 0.0f+this->cubePadding);
+            Point startPoint(i*this->cubeUnit+this->cubePadding+this->startX, this->height+this->startY, 0.0f+this->cubePadding+this->startZ);
             Dimension dimension(this->cubeUnit-2*this->cubePadding, 0.3f-2*this->cubePadding, this->cubeUnit-2*this->cubePadding);
             GameTableLetterCube* letterCube =
             new GameTableLetterCube(startPoint, dimension, gameOverMsg.at(i), this->cubeUnit);
@@ -223,7 +223,7 @@ namespace WordGL {
 
         // create game over msg
         for(unsigned int i=0; i<pressMsg.size(); i++){
-            Point startPoint(i*this->cubeUnit+this->cubePadding+this->startX, this->height, 0.0f+this->cubePadding);
+            Point startPoint(i*this->cubeUnit+this->cubePadding+this->startX, this->height+this->startY, 0.0f+this->cubePadding+this->startZ);
             Dimension dimension(this->cubeUnit-2*this->cubePadding, 0.3f-2*this->cubePadding, this->cubeUnit-2*this->cubePadding);
             GameTableLetterCube* letterCube =
             new GameTableLetterCube(startPoint, dimension, pressMsg.at(i), this->cubeUnit);
@@ -233,7 +233,7 @@ namespace WordGL {
 
         // create game over msg
         for(unsigned int i=0; i<enterMsg.size(); i++){
-            Point startPoint(i*this->cubeUnit+this->cubePadding+this->startX, this->height, 0.0f+this->cubePadding);
+            Point startPoint(i*this->cubeUnit+this->cubePadding+this->startX, this->height+this->startY, 0.0f+this->cubePadding+this->startZ);
             Dimension dimension(this->cubeUnit-2*this->cubePadding, 0.3f-2*this->cubePadding, this->cubeUnit-2*this->cubePadding);
             GameTableLetterCube* letterCube =
             new GameTableLetterCube(startPoint, dimension, enterMsg.at(i), this->cubeUnit);

@@ -44,7 +44,8 @@ namespace WordGL {
 		GLCube(startPoint,dimension),
 		cubeDimension(Dimension(dimension.getWidth()/WORD_MAX_LENGTH, 
 								(dimension.getWidth()/WORD_MAX_LENGTH)-dimension.getHeight(), 
-								dimension.getWidth()/WORD_MAX_LENGTH)) {
+								dimension.getWidth()/WORD_MAX_LENGTH))
+        {
 
 		//Startpoint at a position, so that all elements are centered on the pane
 		GLfloat centeredStartX = this->width - (MAX_SCORE_DISPLAY*this->cubeDimension.getWidth());
@@ -136,7 +137,7 @@ namespace WordGL {
     void ScorePanel::draw() {
 		glPushMatrix();
 		//Draw the panel itself
-        this->move(this->startX, this->startY, this->startZ);
+        //this->move(this->startX, this->startY, this->startZ);
         this->setTexture("wood");
 		GLCube::draw();
 
