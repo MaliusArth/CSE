@@ -94,8 +94,8 @@ namespace WordGL {
         //Setup Lighting
         glEnable(GL_NORMALIZE);
 
-        LightAmbient[0] = 0.5f; LightAmbient[1] = 0.5f; LightAmbient[2] = 0.5f; LightAmbient[3] = 1.0f;
-        LightDiffuse[0] = 1.0f; LightDiffuse[1] = 1.0f; LightDiffuse[2] = 1.0f; LightDiffuse[3] = 1.0f;
+        LightAmbient[0] = 0.3f; LightAmbient[1] = 0.3f; LightAmbient[2] = 0.3f; LightAmbient[3] = 1.0f;
+        LightDiffuse[0] = 0.8f; LightDiffuse[1] = 0.8f; LightDiffuse[2] = 0.8f; LightDiffuse[3] = 1.0f;
         LightPosition[0] = 3.0f; LightPosition[1] = 3.0f; LightPosition[2] = 7.0f; LightPosition[3] = 1.0f;
 
         // Spotlight not visible...? [http://www.vbforums.com/showthread.php?416780-RESOLVED-Problems-with-Specular-light-and-Spotlight-in-OpenGL]
@@ -118,6 +118,9 @@ namespace WordGL {
         LODSwitch = false;
         //glEnable(GL_LIGHTING);      // Enable Lighting
 
+        glEnable(GL_COLOR_MATERIAL);      // Enable Color Material
+        glColorMaterial(GL_FRONT, GL_DIFFUSE);
+
 
         // get window refresh rate and interval
         this->windowRefreshRate = glutGameModeGet(GLUT_GAME_MODE_REFRESH_RATE);
@@ -138,8 +141,6 @@ namespace WordGL {
         //glutFullScreen();
         glutMainLoop();
     }
-
-
 
     /**
     * Resizes the window to a certain height
@@ -168,17 +169,17 @@ namespace WordGL {
             glEnable(GL_LIGHTING);      // Enable Lighting
         }
 
-        if (!LODSwitch)             // If Not Light
-        {
-            glDisable(GL_COLOR_MATERIAL);     // Disable Color Material
-            glMaterialfv(GL_FRONT, GL_AMBIENT, LightAmbient);
-            glMaterialfv(GL_FRONT, GL_DIFFUSE, LightDiffuse);
-        }
-        else                    // Otherwise
-        {
-            glEnable(GL_COLOR_MATERIAL);      // Enable Color Material
-            glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
-        }
+        //if (!LODSwitch)
+        //{
+        //    glDisable(GL_COLOR_MATERIAL);     // Disable Color Material
+        //    glMaterialfv(GL_FRONT, GL_AMBIENT, LightAmbient);
+        //    glMaterialfv(GL_FRONT, GL_DIFFUSE, LightDiffuse);
+        //}
+        //else                    // Otherwise
+        //{
+        //    glEnable(GL_COLOR_MATERIAL);      // Enable Color Material
+        //    glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
+        //}
 
         // Clear The Screen And The Depth Buffer
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -196,7 +197,7 @@ namespace WordGL {
         GLfloat mdl[16];
         glGetFloatv(GL_MODELVIEW_MATRIX, mdl);
 
-        // BUGGY?
+        //get camera position
         camera_pos[0] = -(mdl[0] * mdl[12] + mdl[1] * mdl[13] + mdl[2] * mdl[14]);
         camera_pos[1] = -(mdl[4] * mdl[12] + mdl[5] * mdl[13] + mdl[6] * mdl[14]);
         camera_pos[2] = -(mdl[8] * mdl[12] + mdl[9] * mdl[13] + mdl[10] * mdl[14]);
@@ -215,9 +216,6 @@ namespace WordGL {
         //glLightfv(GL_LIGHT2, GL_POSITION, SpotLightPosition);        // Position The Light
 
         // draw game objects
-        glPushMatrix();
-            //glutSolidCube(1.0f);
-        glPopMatrix();
         this->game.update();
         glutSwapBuffers();
     }

@@ -53,7 +53,7 @@ namespace WordGL {
     void LetterCube::setLetter(char letter){
         this->letter = letter;
         std::string textureName("");
-        textureName += this->letter;
+        textureName = this->letter;
         this->setTopTexture(textureName);
         std::string standardTexture("tile");
         this->setBottomTexture(standardTexture);
@@ -65,21 +65,28 @@ namespace WordGL {
     void LetterCube::draw() {
         glPushMatrix();
 
-        Point camera = Point(Window::getInstance()->camera_pos[0], Window::getInstance()->camera_pos[1], Window::getInstance()->camera_pos[2]);
-        Point nearest = getNearest(camera);
-        GLfloat distance = sqrt(pow(camera.getXCoord()-nearest.getXCoord(), 2)+pow(camera.getYCoord()-nearest.getYCoord(), 2)+pow(camera.getZCoord()-nearest.getZCoord(), 2));
+        if (Window::getInstance()->LODSwitch)
+        {
+            Point camera = Point(Window::getInstance()->camera_pos[0], Window::getInstance()->camera_pos[1], Window::getInstance()->camera_pos[2]);
+            Point nearest = getNearest(camera);
+            GLfloat distance = sqrt(pow(camera.getXCoord()-nearest.getXCoord(), 2)+pow(camera.getYCoord()-nearest.getYCoord(), 2)+pow(camera.getZCoord()-nearest.getZCoord(), 2));
 
-        if( distance >= LOD_RANGE_3 )
-        {
-            this->setColor(1.0f, 0.0f, 0.0f);
-        }
-        else if( distance >= LOD_RANGE_2 )
-        {
-            this->setColor(0.0f, 1.0f, 0.0f);
-        }
-        else if( distance >= LOD_RANGE_1 )
-        {
-            this->setColor(0.0f, 0.0f, 1.0f);
+            if( distance >= LOD_RANGE_3 )
+            {
+                this->setColor(1.0f, 0.0f, 0.0f);
+            }
+            else if( distance >= LOD_RANGE_2 )
+            {
+                this->setColor(0.0f, 1.0f, 0.0f);
+            }
+            else if( distance >= LOD_RANGE_1 )
+            {
+                this->setColor(0.0f, 0.0f, 1.0f);
+            }
+            else
+            {
+                this->setColor(1.0f, 1.0f, 1.0f);
+            }
         }
         else
         {

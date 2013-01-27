@@ -45,6 +45,9 @@ namespace WordGL {
 		GLfloat eyeZ;
         GLfloat camera_pos[3];
 
+        // Toggle switches
+        bool lightSwitch, LODSwitch;
+
     private:
         int window;
         int width;
@@ -60,7 +63,6 @@ namespace WordGL {
         Game game;
         static Window* windowInstance;
 
-        bool lightSwitch, LODSwitch;
         GLfloat LightAmbient[4];
         GLfloat LightDiffuse[4];
         GLfloat LightPosition[4];
