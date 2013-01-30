@@ -64,7 +64,10 @@ namespace WordGL {
     }
     void LetterCube::draw() {
         glPushMatrix();
-
+        
+        glEnable(GL_BLEND); //Enable alpha blending
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); //Set the blend function
+        
         if (Window::getInstance()->LODSwitch)
         {
             Point camera = Point(Window::getInstance()->camera_pos[0], Window::getInstance()->camera_pos[1], Window::getInstance()->camera_pos[2]);
@@ -73,28 +76,28 @@ namespace WordGL {
 
             if( distance >= LOD_RANGE_3 )
             {
-                this->setColor(1.0f, 0.0f, 0.0f);
+                this->setColor(1.0f, 0.0f, 0.0f, 0.5f);
             }
             else if( distance >= LOD_RANGE_2 )
             {
-                this->setColor(0.0f, 1.0f, 0.0f);
+                this->setColor(0.0f, 1.0f, 0.0f, 0.5f);
             }
             else if( distance >= LOD_RANGE_1 )
             {
-                this->setColor(0.0f, 0.0f, 1.0f);
+                this->setColor(0.0f, 0.0f, 1.0f, 0.5f);
             }
             else
             {
-                this->setColor(1.0f, 1.0f, 1.0f);
+                this->setColor(1.0f, 1.0f, 1.0f, 0.5f);
             }
         }
         else
         {
-            this->setColor(1.0f, 1.0f, 1.0f);
+            this->setColor(1.0f, 1.0f, 1.0f, 0.5f);
         }
 
         GLCube::draw();
-
+        glDisable(GL_BLEND);
         glPopMatrix();
     }
     
