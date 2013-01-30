@@ -1,6 +1,7 @@
 /**
  *  WordGL
  *  Copyright (C) 2012  Patrick Stapfer <p.stapfer@technikum-wien.at>
+ *  01.2013: Edited by Viktor Was <viktor.was@technikum-wien.at>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -15,7 +16,6 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 
 #pragma once
 
@@ -40,7 +40,6 @@ namespace WordGL {
         virtual ~LetterCube();
 		void setLetter(char letter);
         virtual void draw(void);
-        virtual Point getNearest(Point point);
 
 	private:
 		char letter;

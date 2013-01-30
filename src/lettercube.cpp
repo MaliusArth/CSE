@@ -1,6 +1,7 @@
 /**
  *  WordGL
  *  Copyright (C) 2012  Patrick Stapfer <p.stapfer@technikum-wien.at>
+ *  01.2013: Edited by Viktor Was <viktor.was@technikum-wien.at>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -48,7 +49,7 @@ namespace WordGL {
     }
     
     /**
-     * sets a letter for the header texture
+     * Sets a letter for the header texture
      */
     void LetterCube::setLetter(char letter){
         this->letter = letter;
@@ -62,6 +63,10 @@ namespace WordGL {
         this->setLeftTexture(standardTexture);
         this->setRightTexture(standardTexture);
     }
+
+    /**
+     * Draws the LetterCube
+     */
     void LetterCube::draw() {
         glPushMatrix();
         
@@ -100,25 +105,10 @@ namespace WordGL {
         glDisable(GL_BLEND);
         glPopMatrix();
     }
-    
-    Point LetterCube::getNearest(Point point) {
-        return GLCube::getNearest(point);
 
-        /*const float worldPosX = -(mdl[0] * mdl[12] + mdl[1] * mdl[13] + mdl[2] * mdl[14]);
-        const float worldPosY = -(mdl[4] * mdl[12] + mdl[5] * mdl[13] + mdl[6] * mdl[14]);
-        const float worldPosZ = -(mdl[8] * mdl[12] + mdl[9] * mdl[13] + mdl[10] * mdl[14]);*/
-
-        /*glPushMatrix();
-            glutSolidCube(0.5f);
-        glPopMatrix();*/
-
-        /*Point nearest = Point(
-            (sqrt(pow(worldPosX-point.getXCoord(), 2))<=sqrt(pow((worldPosX+width)-point.getXCoord(), 2))?worldPosX:worldPosX+width),
-            (sqrt(pow(worldPosY-point.getYCoord(), 2))<=sqrt(pow((worldPosY+height)-point.getYCoord(), 2))?worldPosY:worldPosY+height),
-            (sqrt(pow(worldPosZ-point.getZCoord(), 2))<=sqrt(pow((worldPosZ+depth)-point.getZCoord(), 2))?worldPosZ:worldPosZ+depth));
-        return nearest;*/
-    }
-
+    /**
+     * Destructor
+     */
     LetterCube::~LetterCube() {
         
     }

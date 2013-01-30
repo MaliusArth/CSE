@@ -1,6 +1,7 @@
 /**
  *  WordGL
  *  Copyright (C) 2012  Bernhard Posselt <bernhard.posselt@gmx.at>
+ *  01.2013: Edited by Viktor Was <viktor.was@technikum-wien.at>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -88,17 +89,14 @@ namespace WordGL {
         glShadeModel(GL_SMOOTH);
         glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 
-        //glEnable(GL_COLOR_MATERIAL);
-        //glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
-
         //Setup Lighting
         glEnable(GL_NORMALIZE);
 
-        LightAmbient[0] = 0.3f; LightAmbient[1] = 0.3f; LightAmbient[2] = 0.3f; LightAmbient[3] = 1.0f;
+        LightAmbient[0] = 0.1f; LightAmbient[1] = 0.1f; LightAmbient[2] = 0.1f; LightAmbient[3] = 1.0f;
         LightDiffuse[0] = 0.8f; LightDiffuse[1] = 0.8f; LightDiffuse[2] = 0.8f; LightDiffuse[3] = 1.0f;
         LightPosition[0] = 3.0f; LightPosition[1] = 3.0f; LightPosition[2] = 7.0f; LightPosition[3] = 1.0f;
 
-        // Spotlight not visible...? [http://www.vbforums.com/showthread.php?416780-RESOLVED-Problems-with-Specular-light-and-Spotlight-in-OpenGL]
+        // Spotlight not visible...? [http://www.vbforums.com/showthread.php?416780-RESOLVED-Problems-with-Specular-light-and-Spotlight-in-OpenGL]?
         //SpotLightPosition[0] = 3.0f; SpotLightPosition[1] = 5.0f; SpotLightPosition[2] = -6.0f; SpotLightPosition[3] = 1.0f;
         //SpotLightDirection[0] = 0.0f; SpotLightDirection[1] = -1.0f; SpotLightDirection[2] = 0.0f;
 
@@ -116,7 +114,6 @@ namespace WordGL {
         
         lightSwitch = true;
         LODSwitch = false;
-        //glEnable(GL_LIGHTING);      // Enable Lighting
 
         glEnable(GL_COLOR_MATERIAL);      // Enable Color Material
         glColorMaterial(GL_FRONT, GL_DIFFUSE);
@@ -169,18 +166,6 @@ namespace WordGL {
             glEnable(GL_LIGHTING);      // Enable Lighting
         }
 
-        //if (!LODSwitch)
-        //{
-        //    glDisable(GL_COLOR_MATERIAL);     // Disable Color Material
-        //    glMaterialfv(GL_FRONT, GL_AMBIENT, LightAmbient);
-        //    glMaterialfv(GL_FRONT, GL_DIFFUSE, LightDiffuse);
-        //}
-        //else                    // Otherwise
-        //{
-        //    glEnable(GL_COLOR_MATERIAL);      // Enable Color Material
-        //    glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
-        //}
-
         // Clear The Screen And The Depth Buffer
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glMatrixMode(GL_MODELVIEW);
@@ -201,15 +186,6 @@ namespace WordGL {
         camera_pos[0] = -(mdl[0] * mdl[12] + mdl[1] * mdl[13] + mdl[2] * mdl[14]);
         camera_pos[1] = -(mdl[4] * mdl[12] + mdl[5] * mdl[13] + mdl[6] * mdl[14]);
         camera_pos[2] = -(mdl[8] * mdl[12] + mdl[9] * mdl[13] + mdl[10] * mdl[14]);
-
-        /*GLfloat matrix[16];
-        glGetFloatv (GL_MODELVIEW_MATRIX, matrix);
-        eyeX = matrix[12];
-        eyeY= matrix[13];
-        eyeZ = matrix[14];*/
-
-        //std::cout << "eyeX: " << eyeX << " eyeY: " << eyeY << " eyeZ: " << eyeZ << std::endl;
-        //std::cout << "camera X: " << camera_pos[0] << " Y: " << camera_pos[1] << " Z: " << camera_pos[2] << std::endl;
 		
         //update light position
         glLightfv(GL_LIGHT1, GL_POSITION, LightPosition);        // Position The Light

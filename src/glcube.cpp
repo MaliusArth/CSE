@@ -1,6 +1,7 @@
 /**
  *  WordGL
  *  Copyright (C) 2012  Bernhard Posselt <bernhard.posselt@gmx.at>, Viktor Was <viktor.was@technikum-wien.at>
+ *  01.2013: Edited by Viktor Was <viktor.was@technikum-wien.at>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -204,25 +205,6 @@ namespace WordGL {
 		glTexCoord2f(1.0f, 0.0f); glVertex3f(this->width, this->height, this->depth);
 		glTexCoord2f(1.0f, 1.0f); glVertex3f(this->width, this->height, 0.0f);
 		
-// 		float _pos = 0.0f;		//The forward position relative to the floor
-// 		const float FLOOR_TEXTURE_SIZE = this->depth - _pos; //The size of each "tile"
-// 		
-// 		glBegin(GL_QUADS);
-// 		
-// 		glNormal3f(0.0f, 1.0f, 0.0f);
-// 		
-// 		glTexCoord2f(2000 / FLOOR_TEXTURE_SIZE, _pos / FLOOR_TEXTURE_SIZE);
-// 		glVertex3f(0.0f, 0.0f, 0.0f);
-// 		
-// 		glTexCoord2f(2000 / FLOOR_TEXTURE_SIZE, (2000 + _pos) / FLOOR_TEXTURE_SIZE);
-// 		glVertex3f(0.0f, 0.0f, this->depth);
-// 		
-// 		glTexCoord2f(0.0f, (2000 + _pos) / FLOOR_TEXTURE_SIZE);
-// 		glVertex3f(this->width, 0.0f, this->depth);
-// 		
-// 		glTexCoord2f(0.0f, _pos / FLOOR_TEXTURE_SIZE);
-// 		glVertex3f(this->width, 0.0f, 0.0f);
-		
 		glEnd();
 		glDisable(GL_TEXTURE_2D);
 	}
@@ -285,7 +267,7 @@ namespace WordGL {
 		
 		glBegin(GL_QUADS);
 		
-		glNormal3f(0.0f, 0.0f, 1.0f);		//FIXME check if is set correctly
+		glNormal3f(0.0f, 0.0f, 1.0f);
 		
 		glTexCoord2f(0.0f, 0.0f); glVertex3f(0.0f, 0.0f, this->depth);
 		glTexCoord2f(1.0f, 0.0f); glVertex3f(this->width, 0.0f, this->depth);
@@ -319,7 +301,7 @@ namespace WordGL {
 		
 		glBegin(GL_QUADS);
 		
-		glNormal3f(0.0f, 0.0f, -1.0f);		//FIXME check if is set correctly
+		glNormal3f(0.0f, 0.0f, -1.0f);
 		
 		glTexCoord2f(1.0f, 0.0f); glVertex3f(0.0f, 0.0f, 0.0f);
 		glTexCoord2f(1.0f, 1.0f); glVertex3f(0.0f, this->height, 0.0f);

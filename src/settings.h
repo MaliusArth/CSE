@@ -65,8 +65,8 @@
 #define POINTS_Z 10
 
 // dictionary filepath
-//#define DICTIONARY_PATH "resources/dict/dictionary.txt"
-#define DICTIONARY_PATH "resources/dict/dict_debug.txt"
+#define DICTIONARY_PATH "resources/dict/dictionary.txt"
+//#define DICTIONARY_PATH "resources/dict/dict_debug.txt"
 
 // textures directory
 #define TEXTURES_DIRECTORY "resources/textures"

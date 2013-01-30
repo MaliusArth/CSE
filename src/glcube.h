@@ -1,6 +1,7 @@
 /**
  *  WordGL
  *  Copyright (C) 2012  Bernhard Posselt <bernhard.posselt@gmx.at>
+ *  01.2013: Edited by Viktor Was <viktor.was@technikum-wien.at>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -41,8 +42,6 @@ namespace WordGL {
 		virtual void setTexture(std::string textureName);
 
     protected:
-        bool colorLocked;
-        //GLfloat color[4];
         virtual void texturize(std::string textureName);
         virtual void drawBottom();
         virtual void drawBottom(std::string textureName);
